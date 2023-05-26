@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
 
@@ -100,107 +102,117 @@
 
 	</header>
 	<main>
-		<div class="container mt-5">
-			<div class="row">
-				<div class="col-sm-4">
-					<!-- Carousel -->
-					<div id="demo" class="carousel slide" data-bs-ride="carousel">
+		<div class="row my-5" style="width: 1310px;">
+			<div class="col-6 product-picture" style="background-color: #f5f5f7; width: 641px">
+				<!-- Carousel -->
+				<div id="demo" class="carousel slide" data-bs-ride="carousel">
 
-						<!-- Indicators/dots -->
-						<div class="carousel-indicators">
-							<button type="button" data-bs-target="#demo" data-bs-slide-to="0"
-								class="active"></button>
-							<button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-							<button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-						</div>
+					<!-- Indicators/dots -->
+					<div class="carousel-indicators">
+						<button type="button" data-bs-target="#demo" data-bs-slide-to="0"
+							class="active"></button>
+						<button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+						<button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+					</div>
 
-						<!-- The slideshow/carousel -->
-						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<img src="/image/ip13.webp" alt="Los Angeles"
-									class="d-block w-100">
+					<!-- The slideshow/carousel -->
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<img src="/image/${product.img}" alt="Los Angeles"
+								class="d-block w-100">
+						</div>
+						<div class="carousel-item">
+							<img src="/image/${product.img}" alt="Chicago" class="d-block w-100">
+						</div>
+						<div class="carousel-item">
+							<img src="/image/${product.img}" alt="New York" class="d-block w-100">
+						</div>
+					</div>
+					<!-- Left and right controls/icons -->
+					<button class="carousel-control-prev" type="button"
+						data-bs-target="#demo" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon"></span>
+					</button>
+					<button class="carousel-control-next" type="button"
+						data-bs-target="#demo" data-bs-slide="next">
+						<span class="carousel-control-next-icon"></span>
+					</button>
+				</div>
+			</div>
+			
+			<div class="col-6" style="621px;">
+				<h2>${product.name}</h2>
+				<i class="text-warning bi bi-star"></i>
+				<i class="text-warning bi bi-star"></i>
+				<i class="text-warning bi bi-star"></i>
+				<i class="text-warning bi bi-star"></i>
+				<i class="text-warning bi bi-star"></i>
+				<small class="text-primary">3 đánh giá </small>
+				<h3>${product.price}VND</h3>
+				<div class="fakeimg">Dung Lượng</div>
+				<div class="">
+					<button type="button" class="btn btn-secondary">128GB</button>
+					<button type="button" class="btn btn-secondary">256GB</button>
+					<button type="button" class="btn btn-secondary">512GB</button>
+					<button type="button" class="btn btn-secondary">1TB</button>
+				</div>
+				<div class="pt-3">
+					<div class="card">
+						<div class="card-header">
+							KHUYẾN MÃI
+							<div class="form-check mt-3">
+								<input type="checkbox" class="form-check-input" id="check1"
+									name="option1" value="something" checked> <label
+									class="form-check-label" for="check1">MUA THẲNG</label>
 							</div>
-							<div class="carousel-item">
-								<img src="/image/ip13.webp" alt="Chicago" class="d-block w-100">
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input" id="check2"
+									name="option2" value="something"> <label
+									class="form-check-label" for="check2">TRẢ GÓP </label>
 							</div>
-							<div class="carousel-item">
-								<img src="/image/ip13.webp" alt="New York" class="d-block w-100">
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input" id="check2"
+									name="option2" value="something"> <label
+									class="form-check-label" for="check2">ƯU ĐÃI </label>
 							</div>
 						</div>
-						<!-- Left and right controls/icons -->
-						<button class="carousel-control-prev" type="button"
-							data-bs-target="#demo" data-bs-slide="prev">
-							<span class="carousel-control-prev-icon"></span>
-						</button>
-						<button class="carousel-control-next" type="button"
-							data-bs-target="#demo" data-bs-slide="next">
-							<span class="carousel-control-next-icon"></span>
-						</button>
+						<div class="card-footer">
+							Giới thiệu
+							<h5>iPad Pro M2 12.9” được trang bị công nghệ Liquid Retina
+								XDR, tích hợp tới 10,000 đèn LED mini, chia thành 2500 vùng rải
+								rác khắp màn hình. Tùy thuộc vào nội dung hiển thị mà độ
+								sáng/tối của từng vùng có thể thay đổi, tạo nên sự tương phản
+								màu sắc chân thực và phong phú. làm rất tốt trong việc mang đến
+								chất lượng hiển thị mượt mà và sống động cho iPad Pro M2. Đây
+								vẫn là ưu điểm lý tưởng dành cho những ai làm đồ họa chuyên
+								nghiệp, thường xuyên phải chỉnh sửa hình ảnh/video hoặc chỉ đơn
+								giản là muốn thưởng thức những bộ phim yêu thích.</h5>
+						</div>
 					</div>
 				</div>
-				<div class="col-sm-8">
-					<h2>iPhone 14 Pro 128GB</h2>
-					<h5>Giới thiệu</h5>
-					<h3>29.999.000VND</h3>
-					<div class="fakeimg">Dung Lượng</div>
-					<div class="">
-						<button type="button" class="btn btn-secondary">128GB</button>
-						<button type="button" class="btn btn-secondary">256GB</button>
-						<button type="button" class="btn btn-secondary">512GB</button>
-						<button type="button" class="btn btn-secondary">1TB</button>
-					</div>
-					<div class="pt-3">
-						<div class="card">
-							<div class="card-header">
-								KHUYẾN MÃI
-								<div class="form-check mt-3">
-									<input type="checkbox" class="form-check-input" id="check1"
-										name="option1" value="something" checked> <label
-										class="form-check-label" for="check1">MUA THẲNG</label>
-								</div>
-								<div class="form-check">
-									<input type="checkbox" class="form-check-input" id="check2"
-										name="option2" value="something"> <label
-										class="form-check-label" for="check2">TRẢ GÓP </label>
-								</div>
-								<div class="form-check">
-									<input type="checkbox" class="form-check-input" id="check2"
-										name="option2" value="something"> <label
-										class="form-check-label" for="check2">ƯU ĐÃI </label>
-								</div>
-							</div>
-							<div class="card-footer">
-								ƯU ĐÃI
-								<h5>iPad Pro M2 12.9” được trang bị công nghệ Liquid Retina
-									XDR, tích hợp tới 10,000 đèn LED mini, chia thành 2500 vùng rải
-									rác khắp màn hình. Tùy thuộc vào nội dung hiển thị mà độ
-									sáng/tối của từng vùng có thể thay đổi, tạo nên sự tương phản
-									màu sắc chân thực và phong phú. làm rất tốt trong việc mang đến
-									chất lượng hiển thị mượt mà và sống động cho iPad Pro M2. Đây
-									vẫn là ưu điểm lý tưởng dành cho những ai làm đồ họa chuyên
-									nghiệp, thường xuyên phải chỉnh sửa hình ảnh/video hoặc chỉ đơn
-									giản là muốn thưởng thức những bộ phim yêu thích.</h5>
-							</div>
+				
+				<a href="/add/iphone-${product.id}" class="d-grid pt-4">
+					<button type="button" class="btn btn-primary btn-block">MUA
+						NGAY</button>
+				</a>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="d-grid pt-4">
+							<button type="button" class="btn btn-outline-primary">ƯU
+								ĐÃI</button>
 						</div>
 					</div>
-					<div class="d-grid pt-4">
-						<button type="button" class="btn btn-primary btn-block">MUA
-							NGAY</button>
-					</div>
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="d-grid pt-4">
-								<button type="button" class="btn btn-outline-primary">ƯU
-									ĐÃI</button>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="d-grid pt-4">
-								<button type="button" class="btn btn-outline-primary">TRẢ
-									GÓP</button>
-							</div>
+					<div class="col-sm-6">
+						<div class="d-grid pt-4">
+							<button type="button" class="btn btn-outline-primary">TRẢ
+								GÓP</button>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+
+
 	</main>
 </body>
 

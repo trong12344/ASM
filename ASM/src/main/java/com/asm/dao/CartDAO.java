@@ -4,23 +4,25 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
 
 import com.asm.interfaces.CartInterface;
+import com.asm.model.ListProduct;
 import com.asm.model.Product;
-
+@Service
 public class CartDAO implements CartInterface {
 
-	Map<Integer, Product> map = new HashMap<Integer, Item>();
+	Map<Integer, Product> map = new HashMap<Integer, Product>();
 
 	@Override
-	public Item add(Integer id) {
-		Item item = map.get(id);
+	public Product add(Integer id) {
+		Product item = map.get(id);
 		if (item == null) {
-			item = SP.items.get(id);
-			item.setQty(1);
+			item = ListProduct.items.get(id);
+			item.setSl(1);
 			map.put(id, item);
 		} else {
-			item.setQty(item.getQty() + 1);
+			item.setSl(item.getSl() + 1);
 		}
 		return item;
 	}
@@ -31,15 +33,15 @@ public class CartDAO implements CartInterface {
 	}
 
 	@Override
-	public Item update(Integer id, String qty) {
-		Item item = map.get(id);
-		if (qty.equals("xoa") && item.getQty() > 0) {
-			item.setQty(item.getQty() - 1);
-			if (item.getQty() == 0) {
+	public Product update(Integer id, String qty) {
+		Product item = map.get(id);
+		if (qty.equals("xoa") && item.getSl() > 0) {
+			item.setSl(item.getSl() - 1);
+			if (item.getSl() == 0) {
 				map.remove(item);
 			}
-		} else if (qty.equals("them") && item.getQty() < 100) {
-			item.setQty(item.getQty() + 1);
+		} else if (qty.equals("them") && item.getSl() < 100) {
+			item.setSl(item.getSl() + 1);
 		}
 		return item;
 	}
@@ -51,37 +53,26 @@ public class CartDAO implements CartInterface {
 	}
 
 	@Override
-	public Collection<Item> getItem() {
+	public Collection<Product> getProduct () {
 		return map.values();
 	}
 
 	@Override
 	public int getCount() {
-		return map.values().stream().mapToInt(item -> item.getQty()).sum();
+		return map.values().stream().mapToInt(item -> item.getSl()).sum();
 	}
 
 	@Override
 	public double getAmout() {
 		// TODO Auto-generated method stub
-		return map.values().stream().mapToDouble(item -> item.getPrice() * item.getQty()).sum();
+		return map.values().stream().mapToDouble(item -> item.getPrice() * item.getSl()).sum();
 	}
 
-	@Override
-	public Product add(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Product getSanPham(Integer id) {	
+		Product item = map.get(id);
+		return item;		
 	}
 
-	@Override
-	public Product update(Integer id, String sl) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public Collection<Product> getProduct() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

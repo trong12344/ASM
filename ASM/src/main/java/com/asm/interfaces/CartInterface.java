@@ -2,7 +2,11 @@ package com.asm.interfaces;
 
 import java.util.Collection;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import com.asm.model.Product;
+
 
 public interface CartInterface {
 	Product add(Integer id);
@@ -19,5 +23,5 @@ public interface CartInterface {
 
 	double getAmout();
 		
-	
+	Product getSanPham(Integer id);
 }

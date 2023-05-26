@@ -11,6 +11,8 @@ public class Product {
 	int id;
 	String name;
 	double price;
-	String sl;
+	int sl;
 	String img;
+	double discount;
+	String status;
 }

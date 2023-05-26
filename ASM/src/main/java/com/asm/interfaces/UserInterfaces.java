@@ -6,4 +6,5 @@ import com.asm.model.User;
 
 @Repository 
 public interface UserInterfaces extends MongoRepository<User, String>{
+	
 }
