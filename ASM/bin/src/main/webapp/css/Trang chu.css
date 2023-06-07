@@ -1,0 +1,28 @@
+.productFont{
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 27px;
+    text-decoration: none solid rgb(29, 29, 31);
+    text-align: left;
+    word-spacing: 0px;
+    
+}
+.textBox{
+    font-family: Arial;
+    font-size: 15px;
+    line-height: 20px;   
+    cursor: pointer;
+    padding: 22px 16px 22px 16px;
+}
+.textBox:hover{
+    background-color: #626265;   
+}
+.iconBox{
+    cursor: pointer;
+    font-size: 22px;
+    color: white;
+    padding: 15px 15px 15px 15px;
+    height: 64px;
+    width: 40px;
+}

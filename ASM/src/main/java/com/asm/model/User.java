@@ -1,22 +1,27 @@
 package com.asm.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.List;
 
+
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-@Document(collection = "User")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "user")
 public class User {
 	@Id
-	private String userId;
-	private String username;
-	private String password;
-	private String fullNamme;
-	private Boolean role;
+	String username;
+	String email, fullname, password, photo;
+	boolean activated = true, admin = false;
+	@OneToMany(mappedBy = "accounts")
+	List<Orders> orders;;
 }
