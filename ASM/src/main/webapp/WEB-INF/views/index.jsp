@@ -51,9 +51,9 @@
 	<header>
 		<nav class="navbar navbar-expand-lg bg-body-tertiary "
 			style="height: 64px; background-color: #515154;">
-			<div class="container-fluid" style="width: auto;">
-				<a class="navbar-brand" href="/trang-chu"> <img
-					src=".//image/0000242_Logos Desktop.png" height="45" width="173">
+			<div class="container-fluid" style="width: auto; position: fixed;">
+				<a class="navbar-brand" href="/trang-chu">
+				 <img src="https://shopdunk.com/images/thumbs/0012445_Logo_ShopDunk.png" height="45" width="173">
 
 				</a>
 
