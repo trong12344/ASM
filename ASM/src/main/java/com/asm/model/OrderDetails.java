@@ -1,5 +1,8 @@
 package com.asm.model;
 
+
+
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,4 +32,6 @@ public class OrderDetails {
 	@ManyToOne
 	@JoinColumn(name = "productid")
 	Products products;
+	
+
 }

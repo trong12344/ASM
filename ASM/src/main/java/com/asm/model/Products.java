@@ -35,6 +35,6 @@ public class Products {
 
 	@OneToMany(mappedBy = "products")
 	List<OrderDetails> orderDetails;
-	
+
 	String numberof;
 }
