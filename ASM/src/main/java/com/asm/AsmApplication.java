@@ -1,10 +1,14 @@
-package com.asm.controller;
+package com.asm;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication(exclude = MongoAutoConfiguration.class)
+@SpringBootApplication(scanBasePackages  = "com.asm.controller")
+@EntityScan(basePackages = "com.asm.model")
+
 
 public class AsmApplication {
 

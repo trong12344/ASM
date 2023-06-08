@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 
@@ -118,14 +119,14 @@
 					<!-- The slideshow/carousel -->
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-							<img src="/image/${product.img}" alt="Los Angeles"
+							<img src="${image.image1}" alt="Los Angeles"
 								class="d-block w-100">
 						</div>
 						<div class="carousel-item">
-							<img src="/image/${product.img}" alt="Chicago" class="d-block w-100">
+							<img src="${image.image2}" alt="Chicago" class="d-block w-100">
 						</div>
 						<div class="carousel-item">
-							<img src="/image/${product.img}" alt="New York" class="d-block w-100">
+							<img src="${image.image3}" alt="New York" class="d-block w-100">
 						</div>
 					</div>
 					<!-- Left and right controls/icons -->
@@ -148,7 +149,7 @@
 				<i class="text-warning bi bi-star"></i>
 				<i class="text-warning bi bi-star"></i>
 				<small class="text-primary">3 đánh giá </small>
-				<h3>${product.price}VND</h3>
+				<h3><fmt:formatNumber value="${product.price/2}" pattern="###,###,###" />đ</h3>
 				<div class="fakeimg">Dung Lượng</div>
 				<div class="">
 					<button type="button" class="btn btn-secondary">128GB</button>

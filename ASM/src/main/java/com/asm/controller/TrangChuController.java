@@ -1,5 +1,7 @@
 package com.asm.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
@@ -8,58 +10,34 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.asm.dao.CartDAO;
 import com.asm.interfaces.CartInterface;
-import com.asm.model.ListProduct;
+import com.asm.interfaces.Imageinterface;
+import com.asm.interfaces.ProductInterface;
+import com.asm.model.ImageDetails;
 import com.asm.model.Product;
 
 @Controller
-@ComponentScan("com.asm.dao")
+@ComponentScan("com.asm.interfaces")
 public class TrangChuController {
 	@Autowired
-	CartInterface cart;
-
+	ProductInterface proDAO;
+	@Autowired
+	Imageinterface imgDAO;
 	@RequestMapping("trang-chu")
 	public String index(Model model) {
-		model.addAttribute("ip14", ListProduct.items.values());
+		List<Product> product = proDAO.findAll();
+		model.addAttribute("product", product);
 		return "index";
 	}
 
 	@RequestMapping("san-pham/iphone-{id}")
 	public String sanpham(@PathVariable("id") Integer id, Model model) {
-		Product product = ListProduct.items.get(id);
+		Product product = proDAO.getById(id);
 		model.addAttribute("product", product);
+		ImageDetails image = imgDAO.getById(id);
+		model.addAttribute("image", image);
 		return "product";
 	}
 
-	@RequestMapping("thanh-toan")
-	public String cart(Model model) {
-		model.addAttribute("cart", cart);
-		return "cart";
-	}
-
-	@RequestMapping("add/iphone-{id}")
-	public String add(@PathVariable("id") Integer id) {
-		cart.add(id);
-		return "redirect:/thanh-toan";
-	}
-
-	@RequestMapping("/remove/iphone-{id}")
-	public String remove(@PathVariable("id") Integer id) {
-		cart.remove(id);
-		return "redirect:/thanh-toan";
-	}
-
-	@RequestMapping("update/iphone-{id}/{pre}")
-	public String update(@PathVariable("id") Integer id, @PathVariable("pre") String pre) {
-		cart.update(id, pre);
-		return "redirect:/thanh-toan";
-	}
-
-	@RequestMapping("clear")
-	public String clear() {
-		cart.clear();
-		return "redirect:/thanh-toan";
-	}
-
+	
 }

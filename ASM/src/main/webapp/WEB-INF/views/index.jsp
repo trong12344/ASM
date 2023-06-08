@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!doctype html>
 <html lang="en">
@@ -176,29 +177,26 @@
 			<div class="container">
 				
 					<div class="row">
-						<c:forEach items="${ip14}" var="item">
+						<c:forEach items="${product}" var="item">
+						
 							<div class="col-6 col-md-4 col-lg-3 pb-3">
 								<div class="card">
-									<div class="card-body">
-										<p class="text-danger text-end fw-bold"
-											style="font-size: 18px;">
-											<img src=".//image/${item.status}" alt="" height="31px"
-												width="100px">
-										</p>
-										<a href="san-pham/iphone-${item.id}"><img class="img-fuild" src=".//image/${item.img}"
+									<div class="card-body">									
+										<a href="san-pham/iphone-${item.id}"><img class="img-fuild" src="${item.image}"
 											height="100%" width="100%"></a>
 										<h4 class="productFont card-title text-left py-2">${item.name}</h4>
 										<div class="row" style="height: 24px; width: 245px;">
 											<div class="col-6">
-												<p class="card-text text-primary fw-bold">${item.price}₫</p>
+												<p class="card-text text-primary fw-bold"><fmt:formatNumber value="${item.price/1.5}" pattern="###,###,###" />đ</p>
 											</div>
 											<div class="col-6">
-												<p class="text-decoration-line-through text-secondary">${item.discount}₫</p>
+												<p class="text-decoration-line-through text-secondary"><fmt:formatNumber value="${item.price}" pattern="###,###,###" />đ</p>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+							
 						</c:forEach>
 					</div>
 			
@@ -554,4 +552,5 @@
 		</div>
 	</div>
 </footer>
+
 </html>
