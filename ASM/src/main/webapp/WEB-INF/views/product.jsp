@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!doctype html>
 <html lang="en">
 
@@ -21,6 +21,8 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-float.min.css'>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/combine/npm/slick-carousel@1.7.1/slick/slick.css,npm/slick-carousel@1.7.1/slick/slick-theme.css'><link rel="stylesheet" href="css/productDetails.css">
 
 <script
 	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -40,6 +42,9 @@
 	crossorigin="anonymous">
 	
 </script>
+<script src='https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/slick-carousel@1.7.1/slick/slick.js'></script>
+<script src="JS/script.js"></script>
 </head>
 
 <body ng-app="myapp">
@@ -103,53 +108,49 @@
 
 	</header>
 	<main>
-		<div class="row my-5" style="width: 1310px;">
-			<div class="col-6 product-picture" style="background-color: #f5f5f7; width: 641px">
-				<!-- Carousel -->
-				<div id="demo" class="carousel slide" data-bs-ride="carousel">
+	<div class="row">
+	<div class="col-6">
+		<div class="cSlider cSlider--single">
+			<div class="cSlider__item"><img src="${image.image1}" alt=""></div>
+			<div class="cSlider__item"><img src="${image.image2}" alt=""></div>
+			<div class="cSlider__item"><img src="${image.image3}" alt=""></div>
+			<div class="cSlider__item"><img src="${image.image4}" alt=""></div>
+			<div class="cSlider__item"><img src="${image.image5}" alt=""></div>
+			<div class="cSlider__item"><img src="${image.image6}" alt=""></div>
+			<div class="cSlider__item"><img src="${image.image7}" alt=""></div>
+			<div class="cSlider__item"><img src="${image.image8}" alt=""></div>
+			<div class="cSlider__item"><img src="${image.image9}" alt=""></div>
+			<div class="cSlider__item"><img src="${image.image10}" alt=""></div>
+		
+		</div>
+		<div class="cSlider cSlider--nav">
+			<div class="cSlider__item"><img src="${image.image1}" alt=""></div>
+			<div class="cSlider__item"><img src="${image.image2}" alt=""></div>
+			<div class="cSlider__item"><img src="${image.image3}" alt=""></div>
+			<div class="cSlider__item"><img src="${image.image4}" alt=""></div>
+			<div class="cSlider__item"><img src="${image.image5}" alt=""></div>
+			<div class="cSlider__item"><img src="${image.image6}" alt=""></div>
+			<div class="cSlider__item"><img src="${image.image7}" alt=""></div>
+			<div class="cSlider__item"><img src="${image.image8}" alt=""></div>
+			<div class="cSlider__item"><img src="${image.image9}" alt=""></div>
+			<div class="cSlider__item"><img src="${image.image10}" alt=""></div>
+		</div>
+	</div>
 
-					<!-- Indicators/dots -->
-					<div class="carousel-indicators">
-						<button type="button" data-bs-target="#demo" data-bs-slide-to="0"
-							class="active"></button>
-						<button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-						<button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-					</div>
 
-					<!-- The slideshow/carousel -->
-					<div class="carousel-inner">
-						<div class="carousel-item active">
-							<img src="${image.image1}" alt="Los Angeles"
-								class="d-block w-100">
-						</div>
-						<div class="carousel-item">
-							<img src="${image.image2}" alt="Chicago" class="d-block w-100">
-						</div>
-						<div class="carousel-item">
-							<img src="${image.image3}" alt="New York" class="d-block w-100">
-						</div>
-					</div>
-					<!-- Left and right controls/icons -->
-					<button class="carousel-control-prev" type="button"
-						data-bs-target="#demo" data-bs-slide="prev">
-						<span class="carousel-control-prev-icon"></span>
-					</button>
-					<button class="carousel-control-next" type="button"
-						data-bs-target="#demo" data-bs-slide="next">
-						<span class="carousel-control-next-icon"></span>
-					</button>
-				</div>
-			</div>
-			
-			<div class="col-6" style="621px;">
+	
+			<div class="col-6">
 				<h2>${product.name}</h2>
-				<i class="text-warning bi bi-star"></i>
-				<i class="text-warning bi bi-star"></i>
-				<i class="text-warning bi bi-star"></i>
-				<i class="text-warning bi bi-star"></i>
-				<i class="text-warning bi bi-star"></i>
-				<small class="text-primary">3 đánh giá </small>
-				<h3><fmt:formatNumber value="${product.price/2}" pattern="###,###,###" />đ</h3>
+				<i class="text-warning bi bi-star"></i> <i
+					class="text-warning bi bi-star"></i> <i
+					class="text-warning bi bi-star"></i> <i
+					class="text-warning bi bi-star"></i> <i
+					class="text-warning bi bi-star"></i> <small class="text-primary">3
+					đánh giá </small>
+				<h3>
+					<fmt:formatNumber value="${product.price/2}" pattern="###,###,###" />
+					đ
+				</h3>
 				<div class="fakeimg">Dung Lượng</div>
 				<div class="">
 					<button type="button" class="btn btn-secondary">128GB</button>
@@ -191,7 +192,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<a href="/add/iphone-${product.id}" class="d-grid pt-4">
 					<button type="button" class="btn btn-primary btn-block">MUA
 						NGAY</button>
@@ -210,8 +211,9 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			
 		</div>
+	</div>
 
 
 	</main>
@@ -339,5 +341,7 @@
 		</div>
 	</div>
 </footer>
+<script src='https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/slick-carousel@1.7.1/slick/slick.js'></script><script  src="/JS/script.js"></script>
 
 </html>
