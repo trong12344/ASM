@@ -46,9 +46,41 @@
 <script src=".//JS/index.js"></script>
 
 
-</head>
+</head> 
 
 <body ng-app="myapp">
+	<div class="modal fade" id="exampleModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">User Manager</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="modal-body text-center">
+				<c:choose>
+					<c:when test="${not empty sessionScope.currentUser}">
+						<h5>Welcome ${sessionScope.currentUser.fullname}</h5>
+						<br>
+						<div class="modal-footer">
+							<a href="/resetAndChange" class=" btn btn-primary fw-bold">Change Password</a>
+							<a href="/resetAndChange" class=" btn btn-primary fw-bold">Reset Password</a>
+							<a href="/logout" class=" btn btn-primary fw-bold">LogOut</a>
+							<c:if test="${sessionScope.currentUser.admin == true }">
+								<a href="#" class=" btn btn-primary fw-bold">Admin page</a>
+							</c:if>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<a href="/login-form" class="btn btn-primary fw-bold">LogIn</a>
+						<a href="/login-form" class=" btn btn-primary fw-bold">Register</a>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+	</div>
+</div>
 	<header>
 		<nav class="navbar navbar-expand-lg bg-body-tertiary "
 			style="height: 64px; background-color: #515154;">
@@ -82,13 +114,9 @@
 						<li class="nav-item"><a
 							class="textBox nav-link active text-light px-3 "
 							aria-current="page" href="/ASM/tragop.html">Trả góp</a></li>
-
 						<li class="nav-item"><a
 							class="textBox nav-link active text-light px-4 "
 							aria-current="page" href="/ASM//khuyenmai.html">Flash sale</a></li>
-						<li class="nav-item"><a
-							class="textBox nav-link active text-light px-3 "
-							aria-current="page" href="/ASM/dangnhap.html">Đăng nhập</a></li>
 						<li class="nav-item"><i
 							class="iconBox bi bi-search nav-link active px-4 "
 							style="color: white;" aria-current="page" href="#"></i></li>
@@ -97,7 +125,7 @@
 							style="color: white;" aria-current="page" href="#"></i></li>
 						<li class="nav-item"><i
 							class="iconBox bi bi-person nav-link active px-4 "
-							style="color: white;" aria-current="page" href="#"></i></li>
+							style="color: white;" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></li>
 					</ul>
 
 
