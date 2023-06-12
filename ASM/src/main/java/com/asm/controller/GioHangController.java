@@ -1,15 +1,20 @@
 package com.asm.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.asm.interfaces.CartInterface;
+import com.asm.model.Product;
 @Controller
 public class GioHangController {
-//	@Autowired
+	@Autowired
 	CartInterface cart;
 	
 	@RequestMapping("thanh-toan")
@@ -40,5 +45,10 @@ public class GioHangController {
 	public String clear() {
 		cart.clear();
 		return "redirect:/thanh-toan";
+	}
+	@RequestMapping("/confirmOder")
+	public String oder(Model model) {
+		model.addAttribute("cart", cart);
+		return "orderdetails";
 	}
 }

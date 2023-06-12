@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 
@@ -119,18 +119,18 @@
 					</div>
 					<c:set var="total" value="0"></c:set>
 					<c:forEach var="item" items="${cart.product}">
-						<c:set var="total" value="${total + item.price * item.sl }"></c:set>
+						<c:set var="total" value="${total + item.price /1.5 * item.sl }"></c:set>
 						<div class="container">
 							<div class="row">
 								<div class="col-sm-2 mt-2">
-									<img class="" src="/image/${item.img}" height="80px"
+									<img class="" src="${item.image}" height="80px"
 										width="80px">
 								</div>
 								<div class="col-4 mt-2 text-dark">
 									<strong>${item.name}</strong>
 								</div>
 								<div class="col-3 mt-2 text-dark">
-									<strong>${item.price * item.sl }</strong>
+									<strong><fmt:formatNumber value="${item.price/1.5 * item.sl}" pattern="###,###,###" />đ</strong>
 								</div>
 
 								<div class="col-1 text-dark">
@@ -175,7 +175,7 @@
 						</div>
 						<div class="col-sm-6 text-dark">
 							<div class="mt-4">
-								<small class="fw-bold">${item.price * item.sl }VND</small>
+								<small>  <fmt:formatNumber value="${item.price/1.5 * item.sl}" pattern="###,###,###" />đ</small>
 							</div>
 						</div>
 						<div class="col-sm-6 text-dark ">
@@ -185,7 +185,8 @@
 						</div>
 						<div class="col-sm-6 text-primary">
 							<div class="mt-4">
-								<strong>${total}VND</strong>
+								<strong><fmt:formatNumber value="${total}" pattern="###,###,###" />đ</strong>
+								
 							</div>
 						</div>
 
@@ -198,8 +199,8 @@
 							với các điều khoản trên</label>
 					</div>
 					<div class="d-grid">
-						<button type="button" class="btn btn-primary btn-block mt-3">Tiến
-							hành đặt hàng</button>
+						<a  href="/confirmOder" type="button" class="btn btn-primary btn-block mt-3">Tiến
+							hành đặt hàng</a>
 					</div>
 
 				</div>

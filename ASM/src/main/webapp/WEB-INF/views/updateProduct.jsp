@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,14 +18,16 @@
 <title></title>
 
 <!-- Custom fonts for this template-->
-<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
 	type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
 
 <!-- Custom styles for this template-->
-<link href="css/sb-admin-2.min.css" rel="stylesheet">
+<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="/vendor/datatables/dataTables.bootstrap4.min.css"
+	rel="stylesheet">
 
 </head>
 
@@ -61,7 +64,7 @@
 
 			<li class="nav-item"><a class="nav-link collapsed"
 				href="/productManager"> <i class="fab fa-apple fa-fw"></i> <span>Quản
-						lí danh mục</span>
+						lí sản phẩm</span>
 			</a></li>
 
 			<li class="nav-item"><a class="nav-link collapsed"
@@ -272,7 +275,7 @@
 						<div class="topbar-divider d-none d-sm-block"></div>
 
 						<!-- Nav Item - User Information -->
-			 			<li class="nav-item dropdown no-arrow"><a
+ 			<li class="nav-item dropdown no-arrow"><a
 							class="nav-link dropdown-toggle" href="#" id="userDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> <span
@@ -299,6 +302,7 @@
 									Logout
 								</a>
 							</div></li>
+	
 					</ul>
 
 				</nav>
@@ -310,54 +314,87 @@
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Quản lí doanh mục</h1>
+						<h1 class="h3 mb-0 text-gray-800">Quản lí sản phảm</h1>
 						<a href="#"
 							class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 							class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 					</div>
 
 
-					<!-- Content Row -->
-
-					<div class="card shadow mb-4">
+					<div class=" card shadow mb-4">
+					
 						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">Danh mục hàng
-							</h6>
+							<a href="/update" class="m-0 btn btn-primary float-right">Lưu</a>	
+							<h6 class="m-0 font-weight-bold text-primary">Chi tiết sản
+								phẩm</h6>
+							
 						</div>
-
-
-
-
-						<form action="">
-							<button formaction="/create" type="submit"
-								class="btn btn-primary my-2 ml-2">Thêm danh mục mới</button>
-						</form>
-
-						<div class="table-responsive">
-							<table class="table table-bordered" id="dataTable" width="100%"
-								cellspacing="0">
-								<tr>
-									<th>Loại hàng</a></th>
-									<th>Tổng giá</a></th>
-									<th>Số sản phẩm</a></th>
-
-								</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${product}" var="pro">
-										<tr>
-											<td>${pro.group}</td>
-											<td><fmt:formatNumber value="${pro.sum}" pattern="###,###,###" />đ</td>
-											<td>${pro.count}</td>
-										</tr>
-									</c:forEach>
-								</tbody>
-								
-							</table>
-						</div>
+						
+							
+			<form:form modelAttribute="product" method="post" enctype="multipart/form-data">			
+		<div class="mx-2 row">
+			
+					<div class="pl-3 col-6">
+					
+					
+					<div class="form-group">
+					<label  for="id">ID</label>
+					<form:input path="id" id="id" cssClass="form-control" />
 					</div>
-
-
+					<div class="form-group">
+					<label for="name">Name</label>
+					<form:input path="name" type="text" id="name" cssClass="form-control"/>
+					</div>
+					<div class="form-group">
+					<label for="price">Gía gốc</label>
+					<form:input path="price" id="price" cssClass="form-control"/>
+					
+					</div>
+					<div class="form-group">
+					<label for="sl">Số lượng</label>
+					<form:input path="sl"  id="sl" cssClass="form-control"/>
+					</div>
+					<div class="form-group">
+					<label for="category">Danh mục</label>
+					<form:input path="category.name"  id="category" cssClass="form-control"/>
+					</div>
+					<div class="form-group">
+					<label for="date">Ngày tạo</label>
+					<form:input path="createDate"  id="date" cssClass="form-control"/>
+					<label for="image">Hình ảnh</label>
+					<form:input path="image"  id="image" cssClass="form-control"/>
+									
+					</div>									
+					
+						
+				</div>
+					
+					<div class="col-6">		
+					 <div  class="d-flex justify-content-center">
+					<img style="width: 50%; height: 50%" src="${product.image}">			
+					<input name="image" type="file" hidden="true">
+					</div> 
+					
+					<ul style="list-style: none; display: flex;justify-content: center;" class="mt-5">
+					<li style="margin: 0 10px; "><img alt="" style="height: 100%;width: 100%; object-fit: contain;" src="${product.imageDetailsl.image1}"></li>
+					<li style="margin: 0 10px; "><img alt="" style="height: 100%;width: 100%; object-fit: contain;" src="${product.imageDetailsl.image2}"></li>
+					<li style="margin: 0 10px; "><img alt="" style="height: 100%;width: 100%; object-fit: contain;" src="${product.imageDetailsl.image3}"></li>
+					<li style="margin: 0 10px; "><img alt="" style="height: 100%;width: 100%; object-fit: contain;" src="${product.imageDetailsl.image4}"></li>
+					<li style="margin: 0 10px; "><img alt="" style="height: 100%;width: 100%; object-fit: contain;" src="${product.imageDetailsl.image5}"></li>
+					
+					</ul>
+					<ul style="list-style: none; display: flex;justify-content: center;" class="mt-5">
+					<li style="margin: 0 10px; "><img alt="" style="height: 100%;width: 100%; object-fit: contain;" src="${product.imageDetailsl.image6}"></li>
+					<li style="margin: 0 10px; "><img alt="" style="height: 100%;width: 100%; object-fit: contain;" src="${product.imageDetailsl.image7}"></li>
+					<li style="margin: 0 10px; "><img alt="" style="height: 100%;width: 100%; object-fit: contain;" src="${product.imageDetailsl.image8}"></li>
+					<li style="margin: 0 10px; "><img alt="" style="height: 100%;width: 100%; object-fit: contain;" src="${product.imageDetailsl.image9}"></li>
+					<li style="margin: 0 10px; "><img alt="" style="height: 100%;width: 100%; object-fit: contain;" src="${product.imageDetailsl.image10}"></li>					
+					</ul>
+					</div>
+					
+							
+				</div>
+				</form:form>
 				</div>
 				<!-- /.container-fluid -->
 
@@ -372,6 +409,7 @@
 		<!-- End of Content Wrapper -->
 
 	</div>
+
 	<!-- End of Page Wrapper -->
 
 	<!-- Scroll to Top Button-->
@@ -403,22 +441,22 @@
 	</div>
 
 	<!-- Bootstrap core JavaScript-->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Core plugin JavaScript-->
-	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 	<!-- Custom scripts for all pages-->
-	<script src="js/sb-admin-2.min.js"></script>
+	<script src="/JS/sb-admin-2.min.js"></script>
 
 	<!-- Page level plugins -->
-	<script src="vendor/chart.js/Chart.min.js"></script>
+	<script src="/vendor/chart.js/Chart.min.js"></script>
 
 	<!-- Page level custom scripts -->
-	<script src="js/demo/chart-area-demo.js"></script>
-	<script src="js/demo/chart-pie-demo.js"></script>
-	<script src="js/demo/chart-bar-demo.js"></script>
+
+	<script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 </body>
 

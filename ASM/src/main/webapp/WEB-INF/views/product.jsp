@@ -31,6 +31,7 @@
 	
 </script>
 <link rel="stylesheet" href="/css/iPhone.css">
+<link rel="stylesheet" href="/css/Trang chu.css">
 <script src="Trang chủ.js"></script>
 
 
@@ -49,60 +50,64 @@
 
 <body ng-app="myapp">
 	<header>
-		<nav class="navbar navbar-expand-lg bg-body-tertiary "
-			style="height: 64px; background-color: #515154;">
-			<div class="container-fluid" style="width: auto;">
-				<a class="navbar-brand" href="/trang-chu"> <img
-					src="/image/0000242_Logos Desktop.png" height="45" width="173">
-
+	<nav class="header navbar-expand-lg">
+			<div class="header-lower container-fluid">
+				<a class="navbar-brand" href="/trang-chu">
+				 <img src="https://shopdunk.com/images/thumbs/0012445_Logo_ShopDunk.png" height="100%" width="173">
 				</a>
 
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<div class="header-menu collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav">
 						<li class="nav-item"><a
 							class="textBox nav-link active text-light px-4"
-							aria-current="page" href="#">iPhone</a></li>
+							aria-current="page" href="/ASM/Iphone.jsp">iPhone</a></li>
 						<li class="nav-item"><a
 							class=" textBox nav-link active text-light px-3 "
-							aria-current="page" href="#">iPad</a></li>
+							aria-current="page" href="/ASM/iPad.jsp">iPad</a></li>
 						<li class="nav-item"><a
 							class="textBox nav-link active text-light px-3 "
-							aria-current="page" href="#">Mac</a></li>
+							aria-current="page" href="/ASM/Mac.jsp">Mac</a></li>
 						<li class="nav-item"><a
 							class="textBox nav-link active text-light px-3 "
-							aria-current="page" href="#">Watch</a></li>
+							aria-current="page" href="/ASM/Watch.jsp">Watch</a></li>
 						<li class="nav-item"><a
 							class="textBox nav-link active text-light px-4 "
 							aria-current="page" href="#">Âm thanh</a></li>
+						<li class="nav-item"></li>
 						<li class="nav-item"><a
 							class="textBox nav-link active text-light px-3 "
-							aria-current="page" href="#">Phụ kiện</a></li>
+							aria-current="page" href="/ASM/phukien.jsp">Phụ kiện</a></li>
 						<li class="nav-item"><a
 							class="textBox nav-link active text-light px-3 "
-							aria-current="page" href="#">Dịch vụ</a></li>
-						<li class="nav-item"><a
-							class="textBox nav-link active text-light px-3 "
-							aria-current="page" href="#">Trả góp</a></li>
+							aria-current="page" href="/ASM/dichvu.jsp">Dịch vụ</a></li>
+
 						<li class="nav-item"><a
 							class="textBox nav-link active text-light px-4 "
-							aria-current="page" href="#">Flash sale</a></li>
-						<li class="nav-item"><i
-							class="iconBox bi bi-search nav-link active px-4 "
-							style="color: white;" aria-current="page" href="#"></i></li>
-						<li class="nav-item"><i
-							class="iconBox bi bi-bag nav-link active px-4 "
-							style="color: white;" aria-current="page" href="#"></i></li>
-						<li class="nav-item"><i
-							class="iconBox bi bi-person nav-link active px-4 "
-							style="color: white;" aria-current="page" href="#"></i></li>
-					</ul>
+							aria-current="page" href="/ASM//tragop.jsp">Trả góp</a></li>
+						<li class="nav-item"><a
+							class="textBox nav-link active text-light px-3 "
+							aria-current="page" href="/ASM/khuyenmai.jsp">Khuyến mãi</a></li>
+							<div class="header-links-wrapper">
+								<li class="nav-item"><i
+									class="search-icon nav-link active px-4 "
+									style="color: white;" aria-current="page" href="#"></i></li>
+								<li class="nav-item"><i id="topcartlink"
+									class="bi bi-bag nav-link active px-4 "
+									style="color: white;" aria-current="page" href="#">
+								<span class="qty">1</span></i></li>
+								<li class="nav-item"><i  data-bs-toggle="modal" data-bs-target="#exampleModal"
+									class="bi bi-person login-icon nav-link active px-4 "
+									style="color: white; font-size: 20px" aria-current="page" href="#" >
+									
+								</i></li>
+							</div>
+					</ul> 	
 
 
 				</div>
 			</div>
 		</nav>
 
-		<!-- <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="..."> -->
 
 		</div>
 
@@ -148,7 +153,7 @@
 					class="text-warning bi bi-star"></i> <small class="text-primary">3
 					đánh giá </small>
 				<h3>
-					<fmt:formatNumber value="${product.price/2}" pattern="###,###,###" />
+					<fmt:formatNumber value="${product.price/1.5}" pattern="###,###,###" />
 					đ
 				</h3>
 				<div class="fakeimg">Dung Lượng</div>

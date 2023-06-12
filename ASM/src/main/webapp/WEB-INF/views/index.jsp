@@ -31,7 +31,7 @@
 	crossorigin="anonymous">
 	
 </script>
-<link rel="stylesheet" href="Trang chu.css">
+<link rel="stylesheet" href="/css/Trang chu.css">
 
 
 
@@ -49,69 +49,103 @@
 </head>
 
 <body ng-app="myapp">
+	<div class="modal fade" id="exampleModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">User Manager</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="modal-body text-center">
+				<c:choose>
+					<c:when test="${not empty sessionScope.currentUser}">
+						<h5>Welcome ${sessionScope.currentUser.fullname}</h5>
+						<br>
+						<div class="modal-footer">
+							<a href="/resetAndChange" class=" btn btn-primary fw-bold">Change Password</a>
+							<a href="/resetAndChange" class=" btn btn-primary fw-bold">Reset Password</a>
+							<a href="/logout" class=" btn btn-primary fw-bold">LogOut</a>
+							<c:if test="${sessionScope.currentUser.admin == true }">
+								<a href="/admin" class=" btn btn-primary fw-bold">Admin page</a>
+							</c:if>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<a href="/login-form" class="btn btn-primary fw-bold">LogIn</a>
+						<a href="/login-form" class=" btn btn-primary fw-bold">Register</a>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+	</div>
+</div>
 	<header>
-		<nav class="navbar navbar-expand-lg bg-body-tertiary "
-			style="height: 64px; background-color: #515154;">
-			<div class="container-fluid" style="width: auto; position: fixed;">
+	<nav class="header navbar-expand-lg">
+			<div class="header-lower container-fluid">
 				<a class="navbar-brand" href="/trang-chu">
-				 <img src="https://shopdunk.com/images/thumbs/0012445_Logo_ShopDunk.png" height="45" width="173">
-
+				 <img src="https://shopdunk.com/images/thumbs/0012445_Logo_ShopDunk.png" height="100%" width="173">
 				</a>
 
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<div class="header-menu collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav">
 						<li class="nav-item"><a
 							class="textBox nav-link active text-light px-4"
-							aria-current="page" href="/ASM/Iphone.html">iPhone</a></li>
+							aria-current="page" href="/ASM/Iphone.jsp">iPhone</a></li>
 						<li class="nav-item"><a
 							class=" textBox nav-link active text-light px-3 "
-							aria-current="page" href="/ASM/iPad.html">iPad</a></li>
+							aria-current="page" href="/ASM/iPad.jsp">iPad</a></li>
 						<li class="nav-item"><a
 							class="textBox nav-link active text-light px-3 "
-							aria-current="page" href="/ASM/Mac.html">Mac</a></li>
+							aria-current="page" href="/ASM/Mac.jsp">Mac</a></li>
 						<li class="nav-item"><a
 							class="textBox nav-link active text-light px-3 "
-							aria-current="page" href="/ASM/Watch.html">Watch</a></li>
+							aria-current="page" href="/ASM/Watch.jsp">Watch</a></li>
 						<li class="nav-item"><a
 							class="textBox nav-link active text-light px-4 "
 							aria-current="page" href="#">Âm thanh</a></li>
 						<li class="nav-item"></li>
 						<li class="nav-item"><a
 							class="textBox nav-link active text-light px-3 "
-							aria-current="page" href="/ASM/dichvu.html">Dịch vụ</a></li>
+							aria-current="page" href="/ASM/phukien.jsp">Phụ kiện</a></li>
 						<li class="nav-item"><a
 							class="textBox nav-link active text-light px-3 "
-							aria-current="page" href="/ASM/tragop.html">Trả góp</a></li>
+							aria-current="page" href="/ASM/dichvu.jsp">Dịch vụ</a></li>
 
 						<li class="nav-item"><a
 							class="textBox nav-link active text-light px-4 "
-							aria-current="page" href="/ASM//khuyenmai.html">Flash sale</a></li>
+							aria-current="page" href="/ASM//tragop.jsp">Trả góp</a></li>
 						<li class="nav-item"><a
 							class="textBox nav-link active text-light px-3 "
-							aria-current="page" href="/ASM/dangnhap.html">Đăng nhập</a></li>
-						<li class="nav-item"><i
-							class="iconBox bi bi-search nav-link active px-4 "
-							style="color: white;" aria-current="page" href="#"></i></li>
-						<li class="nav-item"><i
-							class="iconBox bi bi-bag nav-link active px-4 "
-							style="color: white;" aria-current="page" href="#"></i></li>
-						<li class="nav-item"><i
-							class="iconBox bi bi-person nav-link active px-4 "
-							style="color: white;" aria-current="page" href="#"></i></li>
-					</ul>
+							aria-current="page" href="/ASM/khuyenmai.jsp">Khuyến mãi</a></li>
+							<div class="header-links-wrapper">
+								<li class="nav-item"><i
+									class="search-icon nav-link active px-4 "
+									style="color: white;" aria-current="page" href="#"></i></li>
+								<li class="nav-item"><i id="topcartlink"
+									class="bi bi-bag nav-link active px-4 "
+									style="color: white;" aria-current="page" href="#">
+								<span class="qty">1</span></i></li>
+								<li class="nav-item"><i  data-bs-toggle="modal" data-bs-target="#exampleModal"
+									class="login-icon nav-link active px-4 "
+									style="color: white;" aria-current="page" href="#">
+									<img src="	https://shopdunk.com/images/uploaded-source/icon/login.png" alt="">
+								</i></li>
+							</div>
+					</ul> 	
 
 
 				</div>
 			</div>
 		</nav>
-
+	
+	
 		<!-- <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="..."> -->
-
-		</div>
 		<div class="container-fuild">
 			<div id="carouselExampleInterval" class="carousel slide"
 				data-bs-ride="carousel">
-				<div class="carousel-indicators">
+				<div class="carousel-indicators" style="z-index: 2;">
 					<button type="button" data-bs-target="#demo" data-bs-slide-to="0"
 						class="active"></button>
 					<button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
@@ -122,38 +156,39 @@
 				</div>
 				<div class="carousel-inner">
 					<div class="carousel-item active" data-bs-interval="10000">
-						<img src=".//image/banner1.png" class="img-fuild d-block w-100"
-							alt="..." style="height: 601px;">
+						<img src="https://shopdunk.com/images/uploaded/banner/Banner%20Th%C3%A1ng%2005%202023/PC.png"
+							alt="..." class="img">
 					</div>
 					<div class="carousel-item" data-bs-interval="2000">
-						<img src=".//image/banner2.jpeg" class="img-fuild d-block w-100"
-							alt="..." style="height: 601px;">
+						<img src="https://shopdunk.com/images/uploaded/banner%20khai%20tr%C6%B0%C6%A1ng%20nguy%C3%AAn%20hoang_Banner%20PCnh.jpeg" class="img"
+							alt="...">
 					</div>
 					<div class="carousel-item">
-						<img src=".//image/banner3.jpg" class="img-fuild d-block w-100"
-							alt="..." style="height: 601px;">
+						<img src="https://shopdunk.com/images/uploaded/banner/banner%20iphone%2014%20Pro%20Max%20PCuuu.jpg" class="img"
+							alt="...">
 					</div>
 					<div class="carousel-item">
-						<img src=".//image/banner4.png" class="img-fuild d-block w-100"
-							alt="..." style="height: 601px;">
+						<img src="https://shopdunk.com/images/uploaded/banner/Banner%20Th%C3%A1ng%2005%202023/banner%20mac2-19.jpeg" class="img"
+							alt="...">
 					</div>
 					<div class="carousel-item">
-						<img src=".//image/banner5.jpeg" class="img-fuild d-block w-100"
-							alt="..." style="height: 601px;">
+						<img src="https://b-f10-zpcloud.zdn.vn/6784678990956181956/ce39e0b0e6f538ab61e4.jpg" class="img "
+							alt="..." >
 					</div>
 				</div>
 				<button class="carousel-control-prev" type="button"
 					data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="carousel-control carousel-control-prev-icon" aria-hidden="true" ></span>
 					<span class="visually-hidden"></span>
 				</button>
-				<button class="carousel-control-next" type="button"
+				<button class="carousel-control-next " type="button"
 					data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="carousel-control carousel-control-next-icon" aria-hidden="true"></span>
 					<span class="visually-hidden"></span>
 				</button>
 			</div>
-		</div>
+		
+	</div>
 	</header>
 	<main ng-controller="myctrl"
 		style="background-color: #f5f5f7; padding-bottom: 70px;">
@@ -177,7 +212,7 @@
 			<div class="container">
 				
 					<div class="row">
-						<c:forEach items="${product}" var="item">
+						<c:forEach items="${iphone}" var="item">
 						
 							<div class="col-6 col-md-4 col-lg-3 pb-3">
 								<div class="card">
@@ -208,152 +243,160 @@
 					style="height: 40px; width: 220px;">Xem tất cả iPhone ></button>
 			</div>
 			<h2 class="text-center pb-3">iPad</h2>
-			<div class=" row ">
-				<div class="col-6 col-md-4 col-lg-3 pb-3" ng-repeat="ipad in ipad">
-					<div class="card">
-						<div class="card-body ">
-							<p class="text-danger text-end fw-bold " style="font-size: 18px;">
-								<img src=".//image/{{ipad.status}}" alt="" height="31px"
-									width="100px">
-							</p>
-							<img class="img-fuild" src=".//image/{{ipad.photo}}"
-								height="100%" width="100%">
-							<h4 class="productFont card-title text-left fw-bold py-2">{{ipad.name}}</h4>
-							<div class="row" style="height: 24px; width: 245px;">
-								<div class="col-6">
-									<p class="card-text text-primary fw-bold">{{ipad.price}}₫</p>
-								</div>
-								<div class="col-6">
-									<p class="text-decoration-line-through text-secondary">{{ipad.discount}}₫
-									</p>
+			<div class="container">
+				
+					<div class="row">
+						<c:forEach items="${ipad}" var="item">
+						
+							<div class="col-6 col-md-4 col-lg-3 pb-3">
+								<div class="card">
+									<div class="card-body">									
+										<a href="san-pham/iphone-${item.id}"><img class="img-fuild" src="${item.image}"
+											height="100%" width="100%"></a>
+										<h4 class="productFont card-title text-left py-2">${item.name}</h4>
+										<div class="row" style="height: 24px; width: 245px;">
+											<div class="col-6">
+												<p class="card-text text-primary fw-bold"><fmt:formatNumber value="${item.price/1.5}" pattern="###,###,###" />đ</p>
+											</div>
+											<div class="col-6">
+												<p class="text-decoration-line-through text-secondary"><fmt:formatNumber value="${item.price}" pattern="###,###,###" />đ</p>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
+							
+						</c:forEach>
 					</div>
-				</div>
-
+			
 			</div>
 			<div class="col-md-12 text-center py-4">
 				<button type="button" class="btn btn-outline-primary"
 					style="height: 40px; width: 220px;">Xem tất cả iPad ></button>
 			</div>
 			<h2 class="text-center pb-3">Mac</h2>
-			<div class=" row d-flex align-items-stretch ">
-				<div class="col-6 col-md-4 col-lg-3 pb-3" ng-repeat="mac in mac">
-					<div class="card">
-						<div class="card-body ">
-							<p class="text-danger text-end fw-bold " style="font-size: 18px;">
-								<img src=".//image/{{mac.status}}" alt="" height="31px"
-									width="100px">
-							</p>
-							<img class="img-fuild" src=".//image/{{mac.photo}}" height="100%"
-								width="100%">
-							<h4
-								class="productFont text-truncate  card-title text-left fw-bold py-2">{{mac.name}}</h4>
-							<div class="row" style="height: 24px; width: 245px;">
-								<div class="col-6">
-									<p class="card-text text-primary fw-bold">{{mac.price}}₫</p>
-								</div>
-								<div class="col-6">
-									<p class="text-decoration-line-through text-secondary">{{mac.discount}}₫
-									</p>
+			<div class="container">
+				
+					<div class="row">
+						<c:forEach items="${mac}" var="item">
+						
+							<div class="col-6 col-md-4 col-lg-3 pb-3">
+								<div class="card">
+									<div class="card-body">									
+										<a href="san-pham/iphone-${item.id}"><img class="img-fuild" src="${item.image}"
+											height="100%" width="100%"></a>
+										<h4 class="productFont card-title text-left py-2">${item.name}</h4>
+										<div class="row" style="height: 24px; width: 245px;">
+											<div class="col-6">
+												<p class="card-text text-primary fw-bold"><fmt:formatNumber value="${item.price/1.5}" pattern="###,###,###" />đ</p>
+											</div>
+											<div class="col-6">
+												<p class="text-decoration-line-through text-secondary"><fmt:formatNumber value="${item.price}" pattern="###,###,###" />đ</p>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
+							
+						</c:forEach>
 					</div>
-				</div>
-
+			
 			</div>
 			<div class="col-md-12 text-center py-4">
 				<button type="button" class="btn btn-outline-primary"
 					style="height: 40px; width: 220px;">Xem tất cả Mac ></button>
 			</div>
 			<h2 class="text-center pb-3">Watch</h2>
-			<div class=" row ">
-				<div class="col-6 col-md-4 col-lg-3 pb-3" ng-repeat="watch in watch">
-					<div class="card">
-						<div class="card-body ">
-							<p class="text-danger text-end fw-bold " style="font-size: 18px;">
-								<img src=".//image/{{watch.status}}" alt="" height="31px"
-									width="100px">
-							</p>
-							<img class="img-fuild" src=".//image/{{watch.photo}}"
-								height="100%" width="100%">
-							<h4 class="productFont card-title text-left fw-bold py-2">{{watch.name}}</h4>
-							<div class="row" style="height: 24px; width: 245px;">
-								<div class="col-6">
-									<p class="card-text text-primary fw-bold">{{watch.price}}₫
-									</p>
-								</div>
-								<div class="col-6">
-									<p class="text-decoration-line-through text-secondary">{{watch.discount}}₫
-									</p>
+			<div class="container">
+				
+					<div class="row">
+						<c:forEach items="${watch}" var="item">
+						
+							<div class="col-6 col-md-4 col-lg-3 pb-3">
+								<div class="card">
+									<div class="card-body">									
+										<a href="san-pham/iphone-${item.id}"><img class="img-fuild" src="${item.image}"
+											height="100%" width="100%"></a>
+										<h4 class="productFont card-title text-left py-2">${item.name}</h4>
+										<div class="row" style="height: 24px; width: 245px;">
+											<div class="col-6">
+												<p class="card-text text-primary fw-bold"><fmt:formatNumber value="${item.price/1.5}" pattern="###,###,###" />đ</p>
+											</div>
+											<div class="col-6">
+												<p class="text-decoration-line-through text-secondary"><fmt:formatNumber value="${item.price}" pattern="###,###,###" />đ</p>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
+							
+						</c:forEach>
 					</div>
-				</div>
-
+			
 			</div>
 			<div class="col-md-12 text-center py-4">
 				<button type="button" class="btn btn-outline-primary"
 					style="height: 40px; width: 220px;">Xem tất cả Watch ></button>
 			</div>
 			<h2 class="text-center pb-3">Âm thanh</h2>
-			<div class=" row ">
-				<div class="col-6 col-md-4 col-lg-3 pb-3" ng-repeat="ipod in ipod">
-					<div class="card">
-						<div class="card-body ">
-							<p class="text-danger text-end fw-bold " style="font-size: 18px;">
-								<img src="{{ipod.status}}" alt="">
-							</p>
-							<img class="img-fuild" src=".//image/{{ipod.photo}}"
-								height="100%" width="100%">
-							<h4
-								class="productFont text-truncate card-title text-left fw-bold py-2">{{ipod.name}}</h4>
-							<div class="row" style="height: 24px; width: 245px;">
-								<div class="col-6">
-									<p class="card-text text-primary fw-bold">{{ipod.price}}₫</p>
-								</div>
-								<div class="col-6">
-									<p class="text-decoration-line-through text-secondary">{{ipod.discount}}₫
-									</p>
+			<div class="container">
+				
+					<div class="row">
+						<c:forEach items="${amthanh}" var="item">
+						
+							<div class="col-6 col-md-4 col-lg-3 pb-3">
+								<div class="card">
+									<div class="card-body">									
+										<a href="san-pham/iphone-${item.id}"><img class="img-fuild" src="${item.image}"
+											height="100%" width="100%"></a>
+										<h4 class="productFont card-title text-left py-2">${item.name}</h4>
+										<div class="row" style="height: 24px; width: 245px;">
+											<div class="col-6">
+												<p class="card-text text-primary fw-bold"><fmt:formatNumber value="${item.price/1.5}" pattern="###,###,###" />đ</p>
+											</div>
+											<div class="col-6">
+												<p class="text-decoration-line-through text-secondary"><fmt:formatNumber value="${item.price}" pattern="###,###,###" />đ</p>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
+							
+						</c:forEach>
 					</div>
-				</div>
-
+			
 			</div>
 			<div class="col-md-12 text-center py-4">
 				<button type="button" class="btn btn-outline-primary"
 					style="height: 40px; width: 220px;">Xem tất cả Âm thanh ></button>
 			</div>
 			<h2 class="text-center pb-3">Phụ kiện</h2>
-			<div class=" row ">
-				<div class="col-6 col-md-4 col-lg-3 pb-3" ng-repeat="pk in pk">
-					<div class="card">
-						<div class="card-body ">
-							<p class="text-danger text-end fw-bold " style="font-size: 18px;">
-								<img src="{{pk.status}}" alt="">
-							</p>
-							<img class="img-fuild" src=".//image/{{pk.photo}}" height="100%"
-								width="100%">
-							<h4
-								class="productFont text-truncate card-title text-left fw-bold py-2">{{pk.name}}</h4>
-							<div class="row" style="height: 24px; width: 245px;">
-								<div class="col-6">
-									<p class="card-text text-primary fw-bold">{{pk.price}}</p>
-								</div>
-								<div class="col-6">
-									<p class="text-decoration-line-through text-secondary">{{pk.discount}}
-									</p>
+			<div class="container">
+				
+					<div class="row">
+						<c:forEach items="${phukien}" var="item">
+						
+							<div class="col-6 col-md-4 col-lg-3 pb-3">
+								<div class="card">
+									<div class="card-body">									
+										<a href="san-pham/iphone-${item.id}"><img class="img-fuild" src="${item.image}"
+											height="100%" width="100%"></a>
+										<h4 class="productFont card-title text-left py-2">${item.name}</h4>
+										<div class="row" style="height: 24px; width: 245px;">
+											<div class="col-6">
+												<p class="card-text text-primary fw-bold"><fmt:formatNumber value="${item.price/1.5}" pattern="###,###,###" />đ</p>
+											</div>
+											<div class="col-6">
+												<p class="text-decoration-line-through text-secondary"><fmt:formatNumber value="${item.price}" pattern="###,###,###" />đ</p>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
+							
+						</c:forEach>
 					</div>
-				</div>
-
+			
 			</div>
 			<div class="col-md-12 text-center py-4">
 				<button type="button" class="btn btn-outline-primary"

@@ -25,8 +25,18 @@ public class TrangChuController {
 	Imageinterface imgDAO;
 	@RequestMapping("trang-chu")
 	public String index(Model model) {
-		List<Product> product = proDAO.findAll();
-		model.addAttribute("product", product);
+		List<Product> iphone = proDAO.getProductByCate("DM01");
+		List<Product> ipad = proDAO.getProductByCate("DM02");
+		List<Product> mac = proDAO.getProductByCate("DM04");
+		List<Product> watch = proDAO.getProductByCate("DM05");
+		List<Product> amthanh = proDAO.getProductByCate("DM06");
+		List<Product> phukien = proDAO.getProductByCate("DM03");
+		model.addAttribute("iphone", iphone);
+		model.addAttribute("ipad", ipad);
+		model.addAttribute("mac", mac);
+		model.addAttribute("watch", watch);
+		model.addAttribute("amthanh", amthanh);
+		model.addAttribute("phukien", phukien);
 		return "index";
 	}
 
